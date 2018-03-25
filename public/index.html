@@ -10,33 +10,7 @@ LICENSE file in the root directory of this source tree.
 <html>
   <head>
     <title>Messenger Demo</title>
-  </head>
-  <body>
-    <!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<!-- Your customer chat code -->
-<div class="fb-customerchat"
-  page_id="2007081099551346"
-  theme_color="#6699cc">
-</div>
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-
-
-
-
+ 
 
 <meta name="generator" content="Convio CMS" /> 
 <script language="JavaScript" type="text/javascript" src="/components/cookie/cookie.js"></script>
@@ -229,7 +203,23 @@ html {
 
 
 </head>
+
 <body>
+  <!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+page_id="2007081099551346"
+theme_color="#6699cc">
+</div>
 
 
 
