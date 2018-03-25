@@ -447,9 +447,9 @@ function sendHiMessage(recipientId) {
     },
     message: {
       text: `
-      Hi there. I'm MetBot. :)
+      Hi there. My name is Hope. :)
 
-      I am here to help answer any questions you have.
+      I am bot here to help answer any questions you have.
 
       You can ask something like "Where can I find food?" or "How can I help?".
 
