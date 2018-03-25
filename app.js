@@ -260,6 +260,10 @@ function receivedMessage(event) {
         sendHiMessage(senderID);
         break;
 
+        case 'food':
+        sendFoodMessage(senderID);
+        break;
+
       case 'image':
         requiresServerURL(sendImageMessage, [senderID]);
         break;
@@ -443,17 +447,47 @@ function sendHiMessage(recipientId) {
     },
     message: {
       text: `
-Congrats on setting up your Messenger Bot!
+      Hi there. I'm MetBot. :)
 
-Right now, your bot can only respond to a few words. Try out "quick reply", "typing on", "button", or "image" to see how they work. You'll find a complete list of these commands in the "app.js" file. Anything else you type will just be mirrored until you create additional commands.
+      I am here to help answer any questions you have.
 
-For more details on how to create commands, go to https://developers.facebook.com/docs/messenger-platform/reference/send-api.
+      You can ask something like "Where can I find food?" or "How can I help?".
+
+      If you want to talk to a human, type "Talk to human".
       `
     }
   }
 
   callSendAPI(messageData);
 }
+
+function sendFoodMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    "message":{
+      "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"button",
+          "text":"We have a Meal Site Partner in Clearwater called Pinellas Safe Harbor.",
+          "buttons":[
+            {
+              "type":"web_url",
+              "url":"https://www.google.com/maps/d/u/0/viewer?mid=1rbgYPQGVDatFPncuTBv9aNDj5dI&ll=27.910554229369843%2C-82.6957507987114&z=13",
+              "title":"View Map"
+            }
+          ]
+        }
+      }
+    }
+  }
+
+  callSendAPI(messageData);
+}
+
+
 
 /*
  * Send an image using the Send API.
@@ -468,7 +502,7 @@ function sendImageMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: SERVER_URL + "/assets/rift.png"
+          url: "http://mminc.convio.net/mw/images/Ways-to-Give---Gift-Catalog-compressor.jpg"
         }
       }
     }
