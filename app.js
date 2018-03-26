@@ -272,8 +272,8 @@ function receivedMessage(event) {
         sendDonateMessage(senderID);
         break;
 
-        case 'onemonthlater...':
-        sendblogMessage(senderID);
+        case 'one month later':
+        sendBlogMessage(senderID);
         break;
 
       case 'image':
