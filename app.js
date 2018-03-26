@@ -264,6 +264,14 @@ function receivedMessage(event) {
         sendFoodMessage(senderID);
         break;
 
+        case 'help':
+        sendHelpMessage(senderID);
+        break;
+
+        case 'donate':
+        sendDonateMessage(senderID);
+        break;
+
       case 'image':
         requiresServerURL(sendImageMessage, [senderID]);
         break;
@@ -372,7 +380,18 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
-  sendTextMessage(senderID, "Postback called");
+
+if(payload==='subscribeyes'){
+  sendSubscribeConfirmMessage(senderID);
+}else{
+
+  sendDonateReceiptMessage(senderID);
+  setTimeout(()=>{
+    sendSubscribeMessage(senderID);
+
+  },20000)
+}
+
 }
 
 /*
@@ -383,7 +402,7 @@ function receivedPostback(event) {
  *
  */
 function receivedMessageRead(event) {
-  var senderID = event.sender.id;
+  var senderID = event.donatesender.id;
   var recipientID = event.recipient.id;
 
   // All messages before watermark (a timestamp) or sequence have been seen.
@@ -471,7 +490,11 @@ function sendFoodMessage(recipientId) {
         "type":"template",
         "payload":{
           "template_type":"button",
-          "text":"We have a Meal Site Partner in Clearwater called Pinellas Safe Harbor.",
+          "text":`
+          Hi Matt, we have a Meal Site Partner in Clearwater called Pinellas Safe Harbor.
+          
+          Here is a map.
+          `,
           "buttons":[
             {
               "type":"web_url",
@@ -481,6 +504,148 @@ function sendFoodMessage(recipientId) {
           ]
         }
       }
+    }
+  }
+
+  callSendAPI(messageData);
+}
+
+function sendHelpMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    "message":{
+      "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"button",
+          "text":`
+          Matt, thank you for wanting to help!! There are many ways to support us. Whether you want to make a monetary gift, donate goods, or volunteer. Please visit this page to see all the different ways you can help.
+          `,
+          "buttons":[
+            {
+              "type":"web_url",
+              "url":"http://metminbot.herokuapp.com/",
+              "title":"How to help"
+            }
+          ]
+        }
+      }
+    }
+  }
+
+  callSendAPI(messageData);
+}
+
+
+function sendDonateMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    "message":{
+      "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"generic",
+          "elements":[
+             {
+              "title":"Donate",
+              "image_url":"http://www.metromin.org/blog/24883481_10156013028919669_5803668646784474151_o.jpg",
+              "subtitle":"How may meals would you like to donate?",
+               "buttons":[
+                {
+                  "type":"postback",
+                  "title":"52 Meals = $101.92",
+                  "payload":"101.92"
+                },{
+                  "type":"postback",
+                  "title":"102 Meals = $199.92",
+                  "payload":"199.92"
+                }              
+                ,{
+                  "type":"postback",
+                  "title":"Other Amount",
+                  "payload":"other"
+                }              
+              ]      
+            }
+          ]
+        }
+      }
+    }
+  }
+
+  callSendAPI(messageData);
+}
+
+
+function sendDonateReceiptMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    "message":{
+      "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"generic",
+          "elements":[
+             {
+              "title":"Thank you for your donation",
+              "image_url":"http://mminc.convio.net/mw/images/Ways-to-Give---Gift-Catalog-compressor.jpg",
+              "subtitle":"Visa 1234         $199.92"      
+            }
+          ]
+        }
+      }
+    }
+  }
+
+  callSendAPI(messageData);
+}
+
+
+function sendSubscribeMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "Would you like for me to follow up later and let you know how your donations are helping your community?",
+          buttons:[ {
+            type: "postback",
+            title: "Yes",
+            payload: "subscribeyes"
+           }, {
+             type: "postback",
+            title: "Not now",
+            payload: "no"
+        }]
+        }
+      }
+    }
+  }
+
+  callSendAPI(messageData);
+}
+
+function sendSubscribeConfirmMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: `
+      OK. Great!
+
+      I'll keep you informed.
+      `
     }
   }
 
@@ -721,47 +886,21 @@ function sendReceiptMessage(recipientId) {
         type: "template",
         payload: {
           template_type: "receipt",
-          recipient_name: "Peter Chang",
+          recipient_name: "Matt Spaulding",
           order_number: receiptId,
           currency: "USD",
           payment_method: "Visa 1234",
           timestamp: "1428444852",
           elements: [{
-            title: "Oculus Rift",
-            subtitle: "Includes: headset, sensor, remote",
-            quantity: 1,
-            price: 599.00,
+            title: "Donate 102 meals",
+            price: 199.92,
             currency: "USD",
-            image_url: SERVER_URL + "/assets/riftsq.png"
-          }, {
-            title: "Samsung Gear VR",
-            subtitle: "Frost White",
-            quantity: 1,
-            price: 99.99,
-            currency: "USD",
-            image_url: SERVER_URL + "/assets/gearvrsq.png"
           }],
-          address: {
-            street_1: "1 Hacker Way",
-            street_2: "",
-            city: "Menlo Park",
-            postal_code: "94025",
-            state: "CA",
-            country: "US"
-          },
           summary: {
-            subtotal: 698.99,
-            shipping_cost: 20.00,
-            total_tax: 57.67,
-            total_cost: 626.66
-          },
-          adjustments: [{
-            name: "New Customer Discount",
-            amount: -50
-          }, {
-            name: "$100 Off Coupon",
-            amount: -100
-          }]
+            subtotal: 199.92,
+            total_tax: 0.00,
+            total_cost: 199.92
+          }
         }
       }
     }
