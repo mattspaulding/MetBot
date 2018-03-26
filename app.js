@@ -272,6 +272,10 @@ function receivedMessage(event) {
         sendDonateMessage(senderID);
         break;
 
+        case 'one month later...':
+        sendblogMessage(senderID);
+        break;
+
       case 'image':
         requiresServerURL(sendImageMessage, [senderID]);
         break;
@@ -651,6 +655,41 @@ function sendSubscribeConfirmMessage(recipientId) {
 
   callSendAPI(messageData);
 }
+
+
+function sendBlogMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    "message":{
+      "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"generic",
+          "elements":[
+             {
+              "title":"In Her Darkest Hour She Found Hope",
+              "image_url":"http://www.metromin.org/blog/febdarkesthour.jpg",
+              "subtitle":"Thanks To Your Gift",
+               "buttons":[
+                {
+                  type: "web_url",
+                  url: "http://www.metromin.org/blog/in-her-darkest-hour-she-found-hope.html",
+                  title: "Read her story"      
+                }         
+              ]      
+            }
+          ]
+        }
+      }
+    }
+  }
+
+  callSendAPI(messageData);
+}
+
+
 
 
 
