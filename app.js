@@ -272,7 +272,7 @@ function receivedMessage(event) {
         sendDonateMessage(senderID);
         break;
 
-        case 'one month later...':
+        case 'onemonthlater...':
         sendblogMessage(senderID);
         break;
 
