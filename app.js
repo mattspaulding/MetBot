@@ -260,15 +260,15 @@ function receivedMessage(event) {
         sendHiMessage(senderID);
         break;
 
-        case 'food':
+        case 'where can i find food':
         sendFoodMessage(senderID);
         break;
 
-        case 'help':
+        case 'how can i help':
         sendHelpMessage(senderID);
         break;
 
-        case 'donate':
+        case 'i want to donate':
         sendDonateMessage(senderID);
         break;
 
