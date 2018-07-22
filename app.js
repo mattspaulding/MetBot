@@ -385,9 +385,11 @@ function receivedPostback(event) {
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
 
-if(payload==='subscribeyes'){
-  sendSubscribeConfirmMessage(senderID);
-}else{
+  if(payload==='botyes'){
+    sendBotYesMessage(senderID);
+  }else if(payload==='subscribeyes'){
+    sendSubscribeConfirmMessage(senderID);
+  }else{
 
   sendDonateReceiptMessage(senderID);
   setTimeout(()=>{
@@ -491,16 +493,16 @@ function sendHiMessage(recipientId) {
     
           You can talk to a human any time by typing "Talk to human".
 
-          But would you give me a chance? 🙂
+          But would you give me a chance?
           `,
           buttons:[ {
             type: "postback",
             title: "OK",
-            payload: "subscribeyes"
+            payload: "botyes"
            }, {
              type: "postback",
              title: "Talk to a human",
-             payload: "no"
+             payload: "botno"
         }]
         }
       }
@@ -675,6 +677,23 @@ function sendSubscribeConfirmMessage(recipientId) {
       OK. Great!
 
       I'll keep you informed.
+      `
+    }
+  }
+
+  callSendAPI(messageData);
+}
+
+function sendBotYesMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: `
+      🤗
+
+      Oh joy!
       `
     }
   }
