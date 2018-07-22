@@ -489,17 +489,17 @@ function sendHiMessage(recipientId) {
     
           I am bot here to help answer any questions you have.
     
-          You can ask something like "Where can I find food?" or "How can I help?".
-    
-          If you want to talk to a human, type "Talk to human".
+          You can talk to a human any time by typing "Talk to human".
+
+          But would you give me a chance? 🙂
           `,
           buttons:[ {
             type: "postback",
-            title: "Yes",
+            title: "OK",
             payload: "subscribeyes"
            }, {
              type: "postback",
-            title: "Not now",
+            title: "I'd rather talk to a human",
             payload: "no"
         }]
         }
