@@ -124,20 +124,23 @@ body.custom-background { background-color: #ffffff; }
 </head>
 <body class="home page-template-default page page-id-15 custom-background custom-header header-image full-width-content highriskhope outreach-pro-home" itemscope itemtype="https://schema.org/WebPage">
   
-   <!-- Load Facebook SDK for JavaScript -->
+  <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <!-- Your customer chat code -->
 <div class="fb-customerchat"
-  page_id="448619822237104"
-  theme_color="#6699cc">
+  attribution=setup_tool
+  page_id="1033620916804985"
+  theme_color="#0084ff"
+  logged_in_greeting="Hi! I'd like to tell you how we are saving premature babies."
+  logged_out_greeting="Hi! I'd like to tell you how we are saving premature babies.">
 </div>
 
 
