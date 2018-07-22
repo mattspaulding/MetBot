@@ -264,8 +264,8 @@ function receivedMessage(event) {
         sendFoodMessage(senderID);
         break;
 
-        case 'how can i help?':
-        sendHiMessage(senderID);
+        case 'How can I help?':
+        sendHelpMessage(senderID);
         break;
 
         case 'what is this place?':
