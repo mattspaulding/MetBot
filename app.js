@@ -701,7 +701,7 @@ function sendBotYesMessage(recipientId) {
            }, {
              type: "postback",
             title: "How can I help?",
-            payload: "howtohelp"
+            payload: "help"
         }]
         }
       }
