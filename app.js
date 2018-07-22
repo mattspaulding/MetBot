@@ -396,7 +396,7 @@ function receivedPostback(event) {
     setTimeout(()=>{
       sendDonateMessage(senderID);
   
-    },10000)
+    },20000)
   }else if(payload==='subscribeyes'){
     sendSubscribeConfirmMessage(senderID);
   }else{
@@ -583,7 +583,7 @@ function sendDonateMessage(recipientId) {
           "elements":[
              {
               "title":"Donate",
-              "image_url":"http://www.metromin.org/blog/24883481_10156013028919669_5803668646784474151_o.jpg",
+              "image_url":"https://www.highriskhope.org/wp-content/uploads/2015/03/B4B-header.jpg",
               "subtitle":"How may meals would you like to donate?",
                "buttons":[
                 {
@@ -625,7 +625,7 @@ function sendDonateReceiptMessage(recipientId) {
           "elements":[
              {
               "title":"Thank you for your donation",
-              "image_url":"http://mminc.convio.net/mw/images/Ways-to-Give---Gift-Catalog-compressor.jpg",
+              "image_url":"https://www.highriskhope.org/wp-content/uploads/2015/03/B4B-photo.jpg",
               "subtitle":"Visa 1234         $199.92"      
             }
           ]
