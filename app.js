@@ -393,10 +393,10 @@ function receivedPostback(event) {
     sendBotYesMessage(senderID);
   }else if(payload==='help'){
     sendHelpMessage(senderID);
-    // setTimeout(()=>{
-    //   sendDonateMessage(senderID);
+    setTimeout(()=>{
+      sendDonateMessage(senderID);
   
-    // },10000)
+    },10000)
   }else if(payload==='subscribeyes'){
     sendSubscribeConfirmMessage(senderID);
   }else{
@@ -557,7 +557,7 @@ function sendHelpMessage(recipientId) {
           "buttons":[
             {
               "type":"web_url",
-              "url":"http://metminbot.herokuapp.com/",
+              "url":"https://metminbot.herokuapp.com/",
               "title":"How to help"
             }
           ]
