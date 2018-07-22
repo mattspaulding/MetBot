@@ -582,22 +582,22 @@ function sendDonateMessage(recipientId) {
           "template_type":"generic",
           "elements":[
              {
-              "title":"Donate",
+              "title":"Books 4 babies",
               "image_url":"https://www.highriskhope.org/wp-content/uploads/2015/03/B4B-header.jpg",
-              "subtitle":"How may meals would you like to donate?",
+              "subtitle":"Donate books to premature babies?",
                "buttons":[
                 {
                   "type":"postback",
-                  "title":"52 Meals = $101.92",
+                  "title":"52 Books = $101.92",
                   "payload":"101.92"
                 },{
                   "type":"postback",
-                  "title":"102 Meals = $199.92",
+                  "title":"102 Books = $199.92",
                   "payload":"199.92"
                 }              
                 ,{
                   "type":"postback",
-                  "title":"Other Amount",
+                  "title":"Give my books",
                   "payload":"other"
                 }              
               ]      
@@ -625,7 +625,7 @@ function sendDonateReceiptMessage(recipientId) {
           "elements":[
              {
               "title":"Thank you for your donation",
-              "image_url":"https://www.highriskhope.org/wp-content/uploads/2015/03/B4B-photo.jpg",
+              "image_url":"https://www.highriskhope.org/wp-content/uploads/2014/04/patient-resources.jpg",
               "subtitle":"Visa 1234         $199.92"      
             }
           ]
@@ -727,14 +727,14 @@ function sendBlogMessage(recipientId) {
           "template_type":"generic",
           "elements":[
              {
-              "title":"In Her Darkest Hour She Found Hope",
-              "image_url":"http://www.metromin.org/blog/febdarkesthour.jpg",
+              "title":"Book fundraiser a success",
+              "image_url":"https://www.highriskhope.org/wp-content/uploads/2015/03/B4B-photo.jpg",
               "subtitle":"Thanks To Your Gift",
                "buttons":[
                 {
                   type: "web_url",
-                  url: "http://www.metromin.org/blog/in-her-darkest-hour-she-found-hope.html",
-                  title: "Read her story"      
+                  url: "https://www.highriskhope.org/blog/",
+                  title: "Read the story"      
                 }         
               ]      
             }
