@@ -468,16 +468,42 @@ function sendHiMessage(recipientId) {
     recipient: {
       id: recipientId
     },
+    // message: {
+    //   text: `
+    //   Hi there. My name is Hope. :)
+
+    //   I am bot here to help answer any questions you have.
+
+    //   You can ask something like "Where can I find food?" or "How can I help?".
+
+    //   If you want to talk to a human, type "Talk to human".
+    //   `
+    // }
     message: {
-      text: `
-      Hi there. My name is Hope. :)
-
-      I am bot here to help answer any questions you have.
-
-      You can ask something like "Where can I find food?" or "How can I help?".
-
-      If you want to talk to a human, type "Talk to human".
-      `
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text:  `
+          Hi there. My name is Hope. :)
+    
+          I am bot here to help answer any questions you have.
+    
+          You can ask something like "Where can I find food?" or "How can I help?".
+    
+          If you want to talk to a human, type "Talk to human".
+          `,
+          buttons:[ {
+            type: "postback",
+            title: "Yes",
+            payload: "subscribeyes"
+           }, {
+             type: "postback",
+            title: "Not now",
+            payload: "no"
+        }]
+        }
+      }
     }
   }
 
