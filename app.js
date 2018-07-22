@@ -491,7 +491,7 @@ function sendHiMessage(recipientId) {
     
           You can talk to a human any time by typing "Talk to human".
 
-          But would you give me a chance? 🙂
+          But would you give me a chance? 
           `,
           buttons:[ {
             type: "postback",
