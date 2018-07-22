@@ -264,8 +264,12 @@ function receivedMessage(event) {
         sendFoodMessage(senderID);
         break;
 
-        case 'how can i help':
-        sendHelpMessage(senderID);
+        case 'how can i help?':
+        sendHiMessage(senderID);
+        break;
+
+        case 'what is this place?':
+        sendWhatIsMessage(senderID);
         break;
 
         case 'i want to donate':
@@ -470,18 +474,7 @@ function sendHiMessage(recipientId) {
     recipient: {
       id: recipientId
     },
-    // message: {
-    //   text: `
-    //   Hi there. My name is Hope. :)
-
-    //   I am bot here to help answer any questions you have.
-
-    //   You can ask something like "Where can I find food?" or "How can I help?".
-
-    //   If you want to talk to a human, type "Talk to human".
-    //   `
-    // }
-    message: {
+   message: {
       attachment: {
         type: "template",
         payload: {
