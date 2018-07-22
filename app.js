@@ -393,7 +393,10 @@ function receivedPostback(event) {
     sendBotYesMessage(senderID);
   }else if(payload==='help'){
     sendHelpMessage(senderID);
-   
+    setTimeout(()=>{
+      sendDonateMessage(senderID);
+  
+    },10000)
   }else if(payload==='subscribeyes'){
     sendSubscribeConfirmMessage(senderID);
   }else{
