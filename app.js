@@ -391,6 +391,8 @@ function receivedPostback(event) {
 
   if(payload==='botyes'){
     sendBotYesMessage(senderID);
+  }else if(payload==='help'){
+    sendHelpMessage(senderID);
   }else if(payload==='subscribeyes'){
     sendSubscribeConfirmMessage(senderID);
   }else{
