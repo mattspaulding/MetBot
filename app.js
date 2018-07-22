@@ -690,17 +690,31 @@ function sendBotYesMessage(recipientId) {
       id: recipientId
     },
     message: {
-      text: `
-      🤗
-
-      Oh joy!
-      `
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: `
+          🤗
+    
+          Oh joy!
+          `,
+          buttons:[ {
+            type: "postback",
+            title: "What is this place?",
+            payload: "whatis"
+           }, {
+             type: "postback",
+            title: "How can I help?",
+            payload: "howtohelp"
+        }]
+        }
+      }
     }
   }
 
   callSendAPI(messageData);
 }
-
 
 function sendBlogMessage(recipientId) {
   var messageData = {
