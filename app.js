@@ -405,7 +405,7 @@ function receivedPostback(event) {
   setTimeout(()=>{
     sendSubscribeMessage(senderID);
 
-  },20000)
+  },15000)
 }
 
 }
@@ -552,13 +552,13 @@ function sendHelpMessage(recipientId) {
         "payload":{
           "template_type":"button",
           "text":`
-          Matt, thank you for wanting to help!! There are many ways to support us. Whether you want to make a monetary gift, donate goods, or volunteer. Please visit this page to see all the different ways you can help.
+          Matt, thank you for wanting to help!! We are in the middle of a fundraiser to buy books for premature babies.
           `,
           "buttons":[
             {
               "type":"web_url",
               "url":"https://metminbot.herokuapp.com/",
-              "title":"How to help"
+              "title":"Tell me about it"
             }
           ]
         }
